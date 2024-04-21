@@ -6,7 +6,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderComponent} from '../components/Header.component';
 import {QuotesScreenStyles} from './QuotesScreen.styles';
 import {SloganComponent} from '../components/Slogan.component';
-import baseStyles from '../shared/baseStyles.styles';
+import baseStyles from '../shared/styles/baseStyles.styles';
 import {COLORS} from '../constants/colors.constants';
 
 export function QuotesScreen({navigation}: QuotesScreenProps) {

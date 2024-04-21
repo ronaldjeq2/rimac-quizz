@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View, useWindowDimensions, Image} from 'react-native';
 import {resizeDimention} from '../utils/dimensions';
 import {SloganComponentStyles} from './Slogan.component.styles';
-import baseStyles from '../shared/baseStyles.styles';
+import baseStyles from '../shared/styles/baseStyles.styles';
 
 export function SloganComponent() {
   const {width} = useWindowDimensions();
