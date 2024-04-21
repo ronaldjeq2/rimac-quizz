@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, useWindowDimensions} from 'react-native';
 
 import {QuotesScreenProps} from '../types/RootStackParamList.types';
 import {SafeAreaView} from 'react-native-safe-area-context';

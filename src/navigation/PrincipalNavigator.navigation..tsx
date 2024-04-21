@@ -4,11 +4,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {STACKS_ROUTES} from '../constants/routes.constants';
 import {RootStackParamList} from '../types/RootStackParamList.types';
 import {QuotesScreen} from '../screens/QuotesScreen';
+import {useWindowDimensions} from 'react-native';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function PrincipalNavigator() {
   const {QUOTES} = STACKS_ROUTES;
+  const {width} = useWindowDimensions();
 
   return (
     <NavigationContainer>
