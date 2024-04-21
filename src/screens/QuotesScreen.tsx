@@ -26,6 +26,11 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
   } = QuotesScreenStyles({
     width,
   });
+
+  const navigateToHome = () => {
+    console.log('finish')
+  };
+
   return (
     <SafeAreaView style={[safeAreaView]}>
       <View style={principalGradient}>
@@ -48,7 +53,7 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
           Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra
           asesoría, 100% online
         </Text>
-        <QuotesFormComponent />
+        <QuotesFormComponent successFunction={navigateToHome} />
       </ScrollView>
       <View style={footerContainer}>
         <WhiteLogoIcon width={120} height={30} />

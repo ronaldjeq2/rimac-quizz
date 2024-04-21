@@ -11,13 +11,19 @@ import {Button} from '@rneui/themed';
 import {IUserForm} from '../types/user';
 import {userService} from '../services/user/user.service';
 import {userInfoWraper} from '../shared/wrapers/user.wraper';
+import { useUserContext } from '../shared/hooks/useUserContext';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
   {label: 'Pasaporte', value: 'pasaporte'},
 ];
 
-export function QuotesFormComponent() {
+interface IQuotesFormComponentProps {
+  successFunction?: () => void;
+}
+export function QuotesFormComponent({
+  successFunction,
+}: IQuotesFormComponentProps) {
   const {
     control,
     handleSubmit,
@@ -32,6 +38,8 @@ export function QuotesFormComponent() {
     },
   });
   const {width} = useWindowDimensions();
+  const {getInfo, isLoading} = useUserContext();
+
   const {
     containerFieldStyle,
     dropddownFieldStyle,
@@ -47,9 +55,7 @@ export function QuotesFormComponent() {
   HeaderComponentStyles({width});
 
   const onSubmit = async (data: IUserForm) => {
-    console.log(data);
-    const response = await userService.userInfo(userInfoWraper(data));
-    console.log({response});
+    getInfo(data, successFunction);
   };
 
   return (
@@ -132,6 +138,7 @@ export function QuotesFormComponent() {
       <Button
         buttonStyle={buttonStyle}
         titleStyle={[baseStyles.defaultText, titleStyle]}
+        disabled={isLoading}
         onPress={handleSubmit(onSubmit)}>
         Cotiza aqui
       </Button>

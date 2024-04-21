@@ -12,6 +12,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {PrincipalNavigator} from './src/navigation/PrincipalNavigator.navigation.';
 import {AppStyles} from './App.styles';
 import {useWindowDimensions} from 'react-native';
+import {UserProvider} from './src/contexts/UserContext';
 
 function App(): React.JSX.Element {
   const {width} = useWindowDimensions();
@@ -19,7 +20,9 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaProvider style={safeAreaContainer}>
-      <PrincipalNavigator />
+      <UserProvider>
+        <PrincipalNavigator />
+      </UserProvider>
     </SafeAreaProvider>
   );
 }
