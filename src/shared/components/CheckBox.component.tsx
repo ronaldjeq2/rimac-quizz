@@ -9,12 +9,16 @@ import {CheckBoxComponentStyles} from './CheckBox.component.styles';
 
 interface ICheckBoxComponentProps {
   title: string;
+  onChange?: (t: any) => void;
 }
 
-const CheckBoxComponent = ({title}: ICheckBoxComponentProps) => {
+const CheckBoxComponent = ({title, onChange}: ICheckBoxComponentProps) => {
   const {textStyles, containerStyle} = CheckBoxComponentStyles;
   const [checked, setChecked] = React.useState(false);
-  const toggleCheckbox = () => setChecked(!checked);
+  const toggleCheckbox = () => {
+    onChange?.(!checked);
+    setChecked(!checked);
+  };
   return (
     <CheckBox
       checked={checked}

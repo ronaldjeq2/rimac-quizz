@@ -14,12 +14,14 @@ interface IDropdownComponentProps {
   data: IDropdownItem[];
   containerStyles?: StyleProp<ViewStyle>;
   dropdownStyles?: StyleProp<ViewStyle>;
+  onChange?: (t: any) => void;
 }
 
 const DropdownComponent = ({
   data,
   containerStyles,
   dropdownStyles,
+  onChange,
 }: IDropdownComponentProps) => {
   const [value, setValue] = useState<null | string>(null);
   const {itemStyle, textItem, placeholderStyle, selectedTextStyle, iconStyle} =
@@ -30,6 +32,11 @@ const DropdownComponent = ({
         <Text style={textItem}>{item.label}</Text>
       </View>
     );
+  };
+
+  const handleDropDow = (valueDrowpdown: string) => {
+    onChange?.(valueDrowpdown);
+    setValue(valueDrowpdown);
   };
 
   return (
@@ -47,7 +54,7 @@ const DropdownComponent = ({
         placeholder="Seleccione documento"
         value={value}
         onChange={item => {
-          setValue(item.value);
+          handleDropDow(item.value);
         }}
         renderItem={renderItem}
       />

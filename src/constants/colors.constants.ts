@@ -10,6 +10,7 @@ export const COLORS = {
   GRAY_PURPLE: '#e4afff',
   LIGHT_PURPLE: '#edd2ff',
   LIGHT_GRAY_PURPLE: '#2B304E',
+  RED: 'red',
 } as const;
 
 export const GRADIENTS = {

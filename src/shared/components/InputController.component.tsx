@@ -7,7 +7,7 @@ import {
   RegisterOptions,
 } from 'react-hook-form';
 import {InputControllerComponentStyles} from './InputController.component.styles';
-import {useRef} from 'react';
+import {useCallback, useRef} from 'react';
 
 interface IImputControllerComponentProps {
   placeholderInput?: string;
@@ -42,21 +42,21 @@ export const InputControllerComponent = ({
   const {InputTextComponent} = InputControllerComponentStyles;
   const textInputRef = useRef<null | TextInput>(null);
 
-  const handlePress = () => {
+  const handlePress = useCallback(() => {
     textInputRef.current?.focus();
-  };
+  }, []);
 
   const onChangeHandle = (onChange: void) => {
     if (onChangeInput) {
-      onBlurInput?.(onChange);
+      onChangeInput?.(onChange);
     } else {
       onChange;
     }
   };
 
   const onBlurHandle = (onBlur: void) => {
-    if (onChangeInput) {
-      onChangeInput?.(onBlur);
+    if (onBlurInput) {
+      onBlurInput?.(onBlur);
     } else {
       onBlur;
     }

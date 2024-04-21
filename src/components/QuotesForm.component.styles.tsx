@@ -43,6 +43,9 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
       fontWeight: 'bold',
       textDecorationLine: 'underline',
     },
+    errorText: {
+      color: COLORS.RED,
+    },
     buttonStyle: {
       backgroundColor: COLORS.BLACK,
       height: 60,
