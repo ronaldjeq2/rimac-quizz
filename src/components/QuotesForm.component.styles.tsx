@@ -14,10 +14,11 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
     },
     containerFieldStyle: {
       flex: 35,
-      height: 80,
+      height: 65,
       justifyContent: 'center',
       paddingHorizontal: resizeDimention({width, scale: 4}),
       borderWidth: 1,
+      paddingVertical: 0,
     },
     dropddownFieldStyle: {
       borderTopLeftRadius: 10,

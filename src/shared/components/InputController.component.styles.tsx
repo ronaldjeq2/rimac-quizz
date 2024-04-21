@@ -7,5 +7,7 @@ export const InputControllerComponentStyles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     fontSize: 15,
+    paddingVertical: 0,
+    marginVertical: 0
   },
 });
