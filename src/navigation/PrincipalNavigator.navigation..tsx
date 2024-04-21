@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {STACKS_ROUTES} from '../constants/routes.constants';
-import {RootStackParamList} from '../types/RootStackParamList.types';
+import {RootStackParamList} from '../types/RootStackParamList';
 import {QuotesScreen} from '../screens/QuotesScreen';
 import {useWindowDimensions} from 'react-native';
 
