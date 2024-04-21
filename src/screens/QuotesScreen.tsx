@@ -11,6 +11,7 @@ import {QuotesFormComponent} from '../components/QuotesForm.component';
 import {RadialGradient} from 'react-native-gradients';
 import {COLORS, GRADIENTS} from '../constants/colors.constants';
 import WhiteLogoIcon from '../assets/icons/whiteLogo.svg';
+import {STACKS_ROUTES} from '../constants/routes.constants';
 
 export function QuotesScreen({navigation}: QuotesScreenProps) {
   const {width} = useWindowDimensions();
@@ -26,9 +27,9 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
   } = QuotesScreenStyles({
     width,
   });
-
+  const {PLANS} = STACKS_ROUTES;
   const navigateToHome = () => {
-    console.log('finish')
+    navigation.replace(PLANS);
   };
 
   return (
