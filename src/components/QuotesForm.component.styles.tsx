@@ -36,5 +36,18 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
       borderRadius: 10,
       marginVertical: 20,
     },
+    termsAndConditionsStyleText: {
+      fontSize: 16,
+      marginVertical: 10,
+      fontWeight: 'bold',
+      textDecorationLine: 'underline',
+    },
+    buttonStyle: {
+      backgroundColor: COLORS.BLACK,
+      height: 60,
+      borderRadius: 30,
+      marginVertical: 20,
+    },
+    titleStyle: {color: COLORS.WHITE, fontSize: 20, fontWeight: 'bold'},
   });
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {Text, View, useWindowDimensions} from 'react-native';
 import {HeaderComponentStyles} from './Header.component.styles';
 import {InputControllerComponent} from '../shared/components/InputController.component';
 import {useForm} from 'react-hook-form';
@@ -7,6 +7,9 @@ import DropdownComponent from '../shared/components/Dropdown.component';
 import {QuotesFormComponentStyles} from './QuotesForm.component.styles';
 import CheckBoxComponent from '../shared/components/CheckBox.component';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import baseStyles from '../shared/styles/baseStyles.styles';
+import {Button} from '@rneui/themed';
+import {COLORS} from '../constants/colors.constants';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
@@ -32,6 +35,9 @@ export function QuotesFormComponent() {
     inputFieldStyle,
     inputStyles,
     cellPhoneFieldStyle,
+    termsAndConditionsStyleText,
+    buttonStyle,
+    titleStyle,
   } = QuotesFormComponentStyles({width});
   HeaderComponentStyles({width});
   return (
@@ -67,7 +73,14 @@ export function QuotesFormComponent() {
 
       <CheckBoxComponent title="Acepto la Política de Privacidad" />
       <CheckBoxComponent title="Acepto la Política de Comunicaciones Comerciales" />
-      <MaterialIcons name="home" size={50} color="blue" />
+      <Text style={[baseStyles.defaultText, termsAndConditionsStyleText]}>
+        Aplican Términos y Condiciones
+      </Text>
+      <Button
+        buttonStyle={buttonStyle}
+        titleStyle={[baseStyles.defaultText, titleStyle]}>
+        Cotiza aqui
+      </Button>
     </View>
   );
 }
