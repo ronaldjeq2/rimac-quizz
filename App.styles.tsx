@@ -10,8 +10,9 @@ export const AppStyles = ({width}: IAppStyles) => {
   return StyleSheet.create({
     safeAreaContainer: {
       flex: 1,
-      paddingHorizontal: resizeDimention({width, scale: 6}),
+      //paddingHorizontal: resizeDimention({width, scale: 6}),
       backgroundColor: COLORS.WHITE,
+      position: 'relative',
     },
   });
 };

@@ -47,7 +47,8 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
       backgroundColor: COLORS.BLACK,
       height: 60,
       borderRadius: 30,
-      marginVertical: 20,
+      marginTop: 20,
+      marginBottom: 120,
     },
     titleStyle: {color: COLORS.WHITE, fontSize: 20, fontWeight: 'bold'},
   });

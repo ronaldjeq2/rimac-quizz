@@ -8,14 +8,37 @@ import {QuotesScreenStyles} from './QuotesScreen.styles';
 import {SloganComponent} from '../components/Slogan.component';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {QuotesFormComponent} from '../components/QuotesForm.component';
+import {RadialGradient} from 'react-native-gradients';
+import {COLORS, GRADIENTS} from '../constants/colors.constants';
+import WhiteLogoIcon from '../assets/icons/whiteLogo.svg';
 
 export function QuotesScreen({navigation}: QuotesScreenProps) {
   const {width} = useWindowDimensions();
-  const {safeAreaView, spacer, info} = QuotesScreenStyles({width});
+  const {
+    safeAreaView,
+    principalGradient,
+    scrollContainer,
+    spacer,
+    info,
+    footerContainer,
+    footerSpacer,
+    secondaryGradient,
+  } = QuotesScreenStyles({
+    width,
+  });
   return (
-    <SafeAreaView style={safeAreaView}>
+    <SafeAreaView style={[safeAreaView]}>
+      <View style={principalGradient}>
+        <RadialGradient
+          colorList={GRADIENTS.PRINCIPAL}
+          x="50%"
+          y="50%"
+          rx="50%"
+          ry="50%"
+        />
+      </View>
       <ScrollView
-        contentContainerStyle={{flexGrow: 1}} // Permite el desplazamiento
+        contentContainerStyle={scrollContainer} // Permite el desplazamiento
         showsVerticalScrollIndicator={false} // Opcional, para ocultar el indicador
       >
         <HeaderComponent />
@@ -27,6 +50,23 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
         </Text>
         <QuotesFormComponent />
       </ScrollView>
+      <View style={footerContainer}>
+        <WhiteLogoIcon width={120} height={30} />
+        <View style={footerSpacer} />
+        <Text style={{color: COLORS.WHITE}}>
+          © 2023 RIMAC Seguros y Reaseguros.
+        </Text>
+      </View>
+      <View
+        style={secondaryGradient}>
+        <RadialGradient
+          colorList={GRADIENTS.SECONDARY}
+          x="50%"
+          y="50%"
+          rx="50%"
+          ry="50%"
+        />
+      </View>
     </SafeAreaView>
   );
 }

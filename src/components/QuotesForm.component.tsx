@@ -10,10 +10,17 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {Button} from '@rneui/themed';
 import {COLORS} from '../constants/colors.constants';
+import {RadialGradient} from 'react-native-gradients';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
   {label: 'Pasaporte', value: 'pasaporte'},
+];
+
+const colorList = [
+  {offset: '49%', color: '#7df7f1', opacity: '1'},
+  {offset: '67%', color: '#cbf8fa', opacity: '1'},
+  {offset: '100%', color: COLORS.WHITE, opacity: '1'},
 ];
 
 export function QuotesFormComponent() {
