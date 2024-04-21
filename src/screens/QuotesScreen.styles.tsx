@@ -21,6 +21,7 @@ export const QuotesScreenStyles = ({width}: IQuotesScreenStyles) => {
       color: COLORS.BLACK_GRAY,
       fontSize: 17,
       fontWeight: 'bold',
+      marginBottom: 20,
     },
   });
 };
