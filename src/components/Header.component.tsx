@@ -3,6 +3,7 @@ import {Text, View, useWindowDimensions} from 'react-native';
 import LogoIcon from '../assets/icons/logo.svg';
 import PhoneIcon from '../assets/icons/phone.svg';
 import {HeaderComponentStyles} from './Header.component.styles';
+import baseStyles from '../shared/baseStyles.styles';
 export function HeaderComponent() {
   const {width} = useWindowDimensions();
   const {headerContainer, itemContainer, itemContainerRight, phoneText} =
@@ -14,7 +15,7 @@ export function HeaderComponent() {
       </View>
       <View style={itemContainerRight}>
         <PhoneIcon width={20} height={20} />
-        <Text style={phoneText}>(01) 411 6001</Text>
+        <Text style={[baseStyles.defaultText, phoneText]}>(01) 411 6001</Text>
       </View>
     </View>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, useWindowDimensions, Image} from 'react-native';
 import {resizeDimention} from '../utils/dimensions';
 import {SloganComponentStyles} from './Slogan.component.styles';
+import baseStyles from '../shared/baseStyles.styles';
 
 export function SloganComponent() {
   const {width} = useWindowDimensions();
@@ -16,8 +17,12 @@ export function SloganComponent() {
   return (
     <View style={sloganContainer}>
       <View style={sloganDescription}>
-        <Text style={sloganChip}>Seguro Salud Flexible</Text>
-        <Text style={sloganText}>Creado para ti y tu familia</Text>
+        <Text style={[baseStyles.defaultText, sloganChip]}>
+          Seguro Salud Flexible
+        </Text>
+        <Text style={[baseStyles.defaultText, sloganText]}>
+          Creado para ti y tu familia
+        </Text>
       </View>
       <View style={imageContainer}>
         <Image
