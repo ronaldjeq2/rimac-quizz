@@ -5,6 +5,8 @@ import {InputControllerComponent} from '../shared/components/InputController.com
 import {useForm} from 'react-hook-form';
 import DropdownComponent from '../shared/components/Dropdown.component';
 import {QuotesFormComponentStyles} from './QuotesForm.component.styles';
+import CheckBoxComponent from '../shared/components/CheckBox.component';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
@@ -62,6 +64,10 @@ export function QuotesFormComponent() {
         inputStyles={inputStyles}
         infoText="Celular"
       />
+
+      <CheckBoxComponent title="Acepto la Política de Privacidad" />
+      <CheckBoxComponent title="Acepto la Política de Comunicaciones Comerciales" />
+      <MaterialIcons name="home" size={50} color="blue" />
     </View>
   );
 }
