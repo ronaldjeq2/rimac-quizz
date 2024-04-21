@@ -39,7 +39,7 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
     },
     termsAndConditionsStyleText: {
       fontSize: 16,
-      marginVertical: 10,
+      marginVertical: 5,
       fontWeight: 'bold',
       textDecorationLine: 'underline',
     },

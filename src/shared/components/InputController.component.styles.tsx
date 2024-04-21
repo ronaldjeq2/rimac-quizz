@@ -8,6 +8,6 @@ export const InputControllerComponentStyles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 15,
     paddingVertical: 0,
-    marginVertical: 0
+    marginVertical: 0,
   },
 });
