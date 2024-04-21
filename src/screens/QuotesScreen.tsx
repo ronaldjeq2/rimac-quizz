@@ -57,8 +57,7 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
           © 2023 RIMAC Seguros y Reaseguros.
         </Text>
       </View>
-      <View
-        style={secondaryGradient}>
+      <View style={secondaryGradient}>
         <RadialGradient
           colorList={GRADIENTS.SECONDARY}
           x="50%"
