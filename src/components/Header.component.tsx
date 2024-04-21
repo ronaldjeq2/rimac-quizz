@@ -1,16 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Icon} from '@rneui/base';
+import {Text, View, useWindowDimensions} from 'react-native';
 import LogoIcon from '../assets/icons/logo.svg';
+import PhoneIcon from '../assets/icons/phone.svg';
+import {HeaderComponentStyles} from './Header.component.styles';
 export function HeaderComponent() {
+  const {width} = useWindowDimensions();
+  const {headerContainer, itemContainer, itemContainerRight, phoneText} =
+    HeaderComponentStyles({width});
   return (
-    <View>
-      <View>
-        <LogoIcon />
+    <View style={headerContainer}>
+      <View style={itemContainer}>
+        <LogoIcon width={50} height={50} />
       </View>
-      <View>
-        <Icon type="material" name="phone" />
-        <Text>(01) 411 6001</Text>
+      <View style={itemContainerRight}>
+        <PhoneIcon width={20} height={20} />
+        <Text style={phoneText}>(01) 411 6001</Text>
       </View>
     </View>
   );

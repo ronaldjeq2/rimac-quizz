@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {resizeDimention} from '../utils/dimensions';
 import {COLORS} from '../constants/colors.constants';
 
 interface IQuotesScreenStyles {
