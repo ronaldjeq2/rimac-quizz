@@ -6,11 +6,11 @@ import {Controller, useForm} from 'react-hook-form';
 import DropdownComponent from '../shared/components/Dropdown.component';
 import {QuotesFormComponentStyles} from './QuotesForm.component.styles';
 import CheckBoxComponent from '../shared/components/CheckBox.component';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {Button} from '@rneui/themed';
-import {COLORS} from '../constants/colors.constants';
-import {RadialGradient} from 'react-native-gradients';
+import {IUserForm} from '../types/user';
+import {userService} from '../services/user/user.service';
+import {userInfoWraper} from '../shared/wrapers/user.wraper';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
@@ -21,7 +21,6 @@ export function QuotesFormComponent() {
   const {
     control,
     handleSubmit,
-    getValues,
     formState: {errors},
   } = useForm({
     defaultValues: {
@@ -33,9 +32,6 @@ export function QuotesFormComponent() {
     },
   });
   const {width} = useWindowDimensions();
-  const {id, type, number, politicies, privacity} = getValues();
-  console.log({id, type, number, politicies, privacity});
-  console.log({errors});
   const {
     containerFieldStyle,
     dropddownFieldStyle,
@@ -49,7 +45,13 @@ export function QuotesFormComponent() {
     errorText,
   } = QuotesFormComponentStyles({width});
   HeaderComponentStyles({width});
-  const onSubmit = data => console.log(data);
+
+  const onSubmit = async (data: IUserForm) => {
+    console.log(data);
+    const response = await userService.userInfo(userInfoWraper(data));
+    console.log({response});
+  };
+
   return (
     <View>
       <View style={idContainerStyle}>

@@ -16,6 +16,7 @@ import {useWindowDimensions} from 'react-native';
 function App(): React.JSX.Element {
   const {width} = useWindowDimensions();
   const {safeAreaContainer} = AppStyles({width});
+
   return (
     <SafeAreaProvider style={safeAreaContainer}>
       <PrincipalNavigator />
