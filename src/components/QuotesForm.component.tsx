@@ -29,6 +29,7 @@ export function QuotesFormComponent() {
     idContainerStyle,
     inputFieldStyle,
     inputStyles,
+    cellPhoneFieldStyle,
   } = QuotesFormComponentStyles({width});
   HeaderComponentStyles({width});
   return (
@@ -44,12 +45,23 @@ export function QuotesFormComponent() {
           }}
           nameInput={'id'}
           controlInput={control}
-          placeholderInput="nombre completo"
+          placeholderInput="documento"
           containerStyles={[containerFieldStyle, inputFieldStyle]}
           inputStyles={inputStyles}
           infoText="Nro. de documento"
         />
       </View>
+      <InputControllerComponent
+        rules={{
+          required: true,
+        }}
+        nameInput={'id'}
+        controlInput={control}
+        placeholderInput="Escribe el número de celular"
+        containerStyles={[containerFieldStyle, cellPhoneFieldStyle]}
+        inputStyles={inputStyles}
+        infoText="Celular"
+      />
     </View>
   );
 }

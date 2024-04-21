@@ -29,6 +29,12 @@ export const QuotesFormComponentStyles = ({width}: IHeaderComponentStyles) => {
     },
     inputStyles: {
       backgroundColor: COLORS.TRANSPARENT,
+      paddingHorizontal: 0,
+    },
+    cellPhoneFieldStyle: {
+      flex: 1,
+      borderRadius: 10,
+      marginVertical: 20,
     },
   });
 };
