@@ -6,15 +6,17 @@ import {PlansSelectionComponentStyles} from './PlansSelection.component.styles';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {PlanItemComponent} from './PlanItem.component';
 import {usePlans} from '../shared/hooks/usePlans';
-import { useUser } from '../shared/hooks/useUser';
-import { useUserContext } from '../shared/hooks/useUserContext';
+import {useUserContext} from '../shared/hooks/useUserContext';
+import {IPlanState} from '../types/plans';
 
 interface IPlansSelectionComponent {
   existDisscount?: boolean;
+  onPressPlan: (item: IPlanState) => void;
 }
 
 export const PlansSelectionComponent = ({
   existDisscount,
+  onPressPlan,
 }: IPlansSelectionComponent) => {
   const {width} = useWindowDimensions();
   const {container, pagination, containerIcon, text} =
@@ -49,6 +51,7 @@ export const PlansSelectionComponent = ({
             <PlanItemComponent
               planInfo={item}
               existDisscount={existDisscount}
+              onPress={() => onPressPlan(item)}
             />
           );
         }}

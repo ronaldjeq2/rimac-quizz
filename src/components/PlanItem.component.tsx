@@ -9,10 +9,12 @@ import {PlanItemComponentStyles} from './PlanItem.component.styles';
 interface IPlanItemComponentProps {
   planInfo: IPlanState;
   existDisscount?: boolean;
+  onPress: () => void;
 }
 export const PlanItemComponent = ({
   planInfo,
   existDisscount,
+  onPress,
 }: IPlanItemComponentProps) => {
   const {width} = useWindowDimensions();
   const {
@@ -57,6 +59,7 @@ export const PlanItemComponent = ({
           );
         })}
         <Button
+          onPress={onPress}
           buttonStyle={buttonContainer}
           titleStyle={[baseStyles.defaultText, titleButtonText]}>
           Seleccionar Plan
