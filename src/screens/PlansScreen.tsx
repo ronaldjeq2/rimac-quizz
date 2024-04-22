@@ -5,11 +5,13 @@ import {PlansScreenProps} from '../types/RootStackParamList';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderComponent} from '../components/Header.component';
 import {PlansScreenStyles} from './PlansScreen.styles';
-import { StepStatusComponent } from '../components/StepStatus.component';
+import {StepStatusComponent} from '../components/StepStatus.component';
+import {PlansQuestionSelectorComponent} from '../components/PlansQuestionSelector.component';
 
 export function PlansScreen({navigation}: PlansScreenProps) {
   const {width} = useWindowDimensions();
-  const {safeAreaView} = PlansScreenStyles({width});
+  const {safeAreaView, spacerView, containerView} = PlansScreenStyles({width});
+
   const navigateToHome = () => {
     console.log('finish');
   };
@@ -17,8 +19,15 @@ export function PlansScreen({navigation}: PlansScreenProps) {
   return (
     <SafeAreaView style={safeAreaView}>
       <View>
-        <HeaderComponent />
-        <StepStatusComponent />
+        <View style={containerView}>
+          <HeaderComponent />
+          <StepStatusComponent />
+        </View>
+        <View style={spacerView} />
+        <View style={containerView} />
+        <View style={containerView}>
+          <PlansQuestionSelectorComponent />
+        </View>
       </View>
     </SafeAreaView>
   );

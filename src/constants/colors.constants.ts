@@ -13,6 +13,7 @@ export const COLORS = {
   RED: 'red',
   STATUS_GRAY: '#4f4fff',
   STATUS_LIGHT: '#d7dbf5',
+  LIGHT_WHITE: '#fafbff',
 } as const;
 
 export const GRADIENTS = {
