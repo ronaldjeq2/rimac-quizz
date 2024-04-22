@@ -10,7 +10,8 @@ interface CardPersonSelectorComponent {
   info: string;
   Icon: ReactNode;
   id: string;
-  itemSelected: string;
+  itemSelected?: string;
+  onPress: (item: string) => void;
 }
 
 export function CardPersonSelectorComponent({
@@ -19,6 +20,7 @@ export function CardPersonSelectorComponent({
   Icon,
   id,
   itemSelected,
+  onPress,
 }: CardPersonSelectorComponent) {
   const {width} = useWindowDimensions();
   const isSelected = id === itemSelected;
@@ -27,8 +29,13 @@ export function CardPersonSelectorComponent({
       width,
       isSelected,
     });
+
+  const handlePress = () => {
+    onPress(id);
+  };
+
   return (
-    <Pressable style={cardContainer}>
+    <Pressable style={cardContainer} onPress={handlePress}>
       <View style={selectorContainer}>
         {isSelected ? <CheckCircleIcon /> : <CircleIcon />}
       </View>
