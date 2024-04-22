@@ -10,10 +10,8 @@ interface IUsePlansProps {
 export const usePlans = ({age}: IUsePlansProps) => {
   const [isLoading, setisLoading] = useState(false);
   const [plans, setPlans] = useState<TPlansState | null>(null);
-  console.log('usePlans', {plans});
   const filterPlansForAge = useCallback(
     (plansItems: TPlansState) => {
-        console.log({age})
       if (age) {
         setPlans(plansItems.filter(plan => plan.age < age));
         return;
@@ -28,7 +26,6 @@ export const usePlans = ({age}: IUsePlansProps) => {
       setisLoading(true);
       const response = await plansService.plansInfo();
       if (response) {
-        console.log('response', {response});
         filterPlansForAge(plansInfoWraper(response));
       }
     } finally {
