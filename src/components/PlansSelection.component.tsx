@@ -12,9 +12,14 @@ import {PlansSelectionComponentStyles} from './PlansSelection.component.styles';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {PlanItemComponent} from './PlanItem.component';
 import {usePlans} from '../shared/hooks/usePlans';
-import {resizeDimention} from '../utils/dimensions';
 
-export const PlansSelectionComponent = () => {
+interface IPlansSelectionComponent {
+  existDisscount?: boolean;
+}
+
+export const PlansSelectionComponent = ({
+  existDisscount,
+}: IPlansSelectionComponent) => {
   const {width} = useWindowDimensions();
   const {container, pagination, containerIcon, text} =
     PlansSelectionComponentStyles({width});
@@ -42,7 +47,12 @@ export const PlansSelectionComponent = () => {
         horizontal
         data={plans}
         renderItem={({item}) => {
-          return <PlanItemComponent planInfo={item} existDisscount />;
+          return (
+            <PlanItemComponent
+              planInfo={item}
+              existDisscount={existDisscount}
+            />
+          );
         }}
         keyExtractor={item => item.name}
         pagingEnabled
@@ -73,3 +83,5 @@ export const PlansSelectionComponent = () => {
     </View>
   );
 };
+
+export default PlansSelectionComponent;

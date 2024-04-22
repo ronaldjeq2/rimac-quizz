@@ -7,7 +7,13 @@ import {CardPersonSelectorComponent} from './CardPersonSelector.component';
 import MeProtectionIcon from '../assets/icons/meProtection.svg';
 import OtherProtectionIcon from '../assets/icons/otherProtection.svg';
 
-export function PlansQuestionSelectorComponent() {
+interface IPlansQuestionSelectorComponentProps {
+  onSelectedOption?: (option: string) => void;
+}
+
+export function PlansQuestionSelectorComponent({
+  onSelectedOption,
+}: IPlansQuestionSelectorComponentProps) {
   const {question, info, container} = PlansQuestionSelectorComponentStyles();
   const {userInfo} = useUserContext();
   const [itemSelected, setItemSelected] = useState<string | undefined>(
@@ -16,6 +22,7 @@ export function PlansQuestionSelectorComponent() {
 
   const handleOption = (id: string) => {
     setItemSelected(id);
+    onSelectedOption?.(id);
   };
 
   return (
