@@ -1,27 +1,22 @@
 import React, {useState} from 'react';
-import {Text, View, useWindowDimensions} from 'react-native';
-import LogoIcon from '../assets/icons/logo.svg';
-import PhoneIcon from '../assets/icons/phone.svg';
-import {HeaderComponentStyles} from './Header.component.styles';
+import {Text, View} from 'react-native';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {useUserContext} from '../shared/hooks/useUserContext';
 import {PlansQuestionSelectorComponentStyles} from './PlansQuestionSelector.component.styles';
-import {resizeDimention} from '../utils/dimensions';
 import {CardPersonSelectorComponent} from './CardPersonSelector.component';
 import MeProtectionIcon from '../assets/icons/meProtection.svg';
 import OtherProtectionIcon from '../assets/icons/otherProtection.svg';
 
 export function PlansQuestionSelectorComponent() {
-  const {width} = useWindowDimensions();
-  const {question, info, container} = PlansQuestionSelectorComponentStyles({
-    width,
-  });
+  const {question, info, container} = PlansQuestionSelectorComponentStyles();
   const {userInfo} = useUserContext();
-  const [itemSelected, setItemSelected] = useState(undefined);
+  const [itemSelected, setItemSelected] = useState<string | undefined>(
+    undefined,
+  );
 
   const handleOption = (id: string) => {
-    setItemSelected(id)
-  }
+    setItemSelected(id);
+  };
 
   return (
     <View style={container}>

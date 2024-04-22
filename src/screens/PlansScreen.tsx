@@ -1,5 +1,5 @@
 import React from 'react';
-import {useWindowDimensions, View} from 'react-native';
+import {ScrollView, useWindowDimensions, View} from 'react-native';
 
 import {PlansScreenProps} from '../types/RootStackParamList';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -7,18 +7,18 @@ import {HeaderComponent} from '../components/Header.component';
 import {PlansScreenStyles} from './PlansScreen.styles';
 import {StepStatusComponent} from '../components/StepStatus.component';
 import {PlansQuestionSelectorComponent} from '../components/PlansQuestionSelector.component';
+import {usePlans} from '../shared/hooks/usePlans';
 
 export function PlansScreen({navigation}: PlansScreenProps) {
   const {width} = useWindowDimensions();
   const {safeAreaView, spacerView, containerView} = PlansScreenStyles({width});
-
   const navigateToHome = () => {
     console.log('finish');
   };
 
   return (
     <SafeAreaView style={safeAreaView}>
-      <View>
+      <ScrollView>
         <View style={containerView}>
           <HeaderComponent />
           <StepStatusComponent />
@@ -28,7 +28,7 @@ export function PlansScreen({navigation}: PlansScreenProps) {
         <View style={containerView}>
           <PlansQuestionSelectorComponent />
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

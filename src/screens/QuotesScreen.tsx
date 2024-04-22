@@ -44,9 +44,8 @@ export function QuotesScreen({navigation}: QuotesScreenProps) {
         />
       </View>
       <ScrollView
-        contentContainerStyle={scrollContainer} // Permite el desplazamiento
-        showsVerticalScrollIndicator={false} // Opcional, para ocultar el indicador
-      >
+        contentContainerStyle={scrollContainer}
+        showsVerticalScrollIndicator={false}>
         <HeaderComponent />
         <SloganComponent />
         <View style={spacer} />
