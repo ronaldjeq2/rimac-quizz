@@ -11,4 +11,7 @@ export interface IUserInfoState {
   lastName: string;
   birthDay: string;
   age: number;
+  phoneNumber: string;
+  docType: string;
+  docNumber: string;
 }

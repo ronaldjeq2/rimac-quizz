@@ -11,7 +11,7 @@ export const useUser = () => {
       setisLoading(true);
       const response = await userService.userInfo(userInfoParamsWraper(data));
       if (response) {
-        setUserInfo(userInfoWraper(response));
+        setUserInfo(userInfoWraper(response, data));
       }
       if (successFunction) {
         successFunction();

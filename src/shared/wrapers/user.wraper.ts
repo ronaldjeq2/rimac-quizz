@@ -16,6 +16,16 @@ export const userInfoParamsWraper = (
   };
 };
 
-export const userInfoWraper = (info: IGetUseresponse): IUserInfoState => {
-  return {...info, age: getAgeSinceDate(info.birthDay)};
+export const userInfoWraper = (
+  info: IGetUseresponse,
+  userParams: IUserForm,
+): IUserInfoState => {
+  const {id, number, type} = userParams;
+  return {
+    ...info,
+    age: getAgeSinceDate(info.birthDay),
+    phoneNumber: number,
+    docNumber: id,
+    docType: type,
+  };
 };
