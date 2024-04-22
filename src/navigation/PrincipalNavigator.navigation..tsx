@@ -5,11 +5,12 @@ import {STACKS_ROUTES} from '../constants/routes.constants';
 import {RootStackParamList} from '../types/RootStackParamList';
 import {QuotesScreen} from '../screens/QuotesScreen';
 import {PlansScreen} from '../screens/PlansScreen';
+import {PlanUsedDetailsScreen} from '../screens/PlanUsedDetails';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function PrincipalNavigator() {
-  const {QUOTES, PLANS} = STACKS_ROUTES;
+  const {QUOTES, PLANS, PLAN_USED_DETAILS} = STACKS_ROUTES;
 
   return (
     <NavigationContainer>
@@ -23,6 +24,11 @@ export function PrincipalNavigator() {
           options={{headerShown: false}}
           name={PLANS}
           component={PlansScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name={PLAN_USED_DETAILS}
+          component={PlanUsedDetailsScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

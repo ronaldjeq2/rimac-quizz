@@ -2,11 +2,11 @@ import {StyleSheet} from 'react-native';
 import {COLORS} from '../constants/colors.constants';
 import {resizeDimention} from '../utils/dimensions';
 
-interface IQuotesScreenStyles {
+interface IPlansScreenStyles {
   width: number;
 }
 
-export const PlansScreenStyles = ({width}: IQuotesScreenStyles) => {
+export const PlansScreenStyles = ({width}: IPlansScreenStyles) => {
   return StyleSheet.create({
     safeAreaView: {
       backgroundColor: COLORS.LIGHT_WHITE,

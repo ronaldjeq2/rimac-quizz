@@ -8,6 +8,7 @@ import {PlansScreenStyles} from './PlansScreen.styles';
 import {StepStatusComponent} from '../components/StepStatus.component';
 import {PlansQuestionSelectorComponent} from '../components/PlansQuestionSelector.component';
 import {TYPEPLANS_WHIT_DISCOUNTS} from '../constants/typePlans-constants';
+import {IPlanState} from '../types/plans';
 
 const LazyPlansSelectionComponent = lazy(
   () => import('../components/PlansSelection.component'),
@@ -18,8 +19,13 @@ export function PlansScreen({navigation}: PlansScreenProps) {
   const {safeAreaView, spacerView, containerView} = PlansScreenStyles({width});
   const [isWithDisccountOption, setIsWithDisccountOption] = useState(false);
   const [optionSelected, setOptionSelected] = useState<string | null>(null);
-  const navigateToHome = () => {
-    console.log('finish');
+
+  const onHandleOptionPlan = (planInfo: IPlanState) => {
+    console.log({planInfo});
+    const priceToSend: number =
+      (isWithDisccountOption ? planInfo.disccountPrice : planInfo.price) ||
+      planInfo.price;
+    navigation.replace('PlanUsedDetails', {planInfo, priceToSend});
   };
 
   const onHandleOption = (id: string) => {
@@ -43,6 +49,7 @@ export function PlansScreen({navigation}: PlansScreenProps) {
           <Suspense fallback={<Text>Loading...</Text>}>
             <LazyPlansSelectionComponent
               existDisscount={isWithDisccountOption}
+              onPressPlan={onHandleOptionPlan}
             />
           </Suspense>
         )}
