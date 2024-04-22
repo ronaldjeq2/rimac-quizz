@@ -7,7 +7,6 @@ import {HeaderComponent} from '../components/Header.component';
 import {PlansScreenStyles} from './PlansScreen.styles';
 import {StepStatusComponent} from '../components/StepStatus.component';
 import {PlansQuestionSelectorComponent} from '../components/PlansQuestionSelector.component';
-import {usePlans} from '../shared/hooks/usePlans';
 import {PlansSelectionComponent} from '../components/PlansSelection.component';
 
 export function PlansScreen({navigation}: PlansScreenProps) {

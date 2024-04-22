@@ -1,10 +1,24 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../constants/colors.constants';
+import {resizeDimention} from '../utils/dimensions';
 
-export const PlansSelectionComponentStyles = () => {
+interface IPlansSelectionComponentStylesProps {
+  width: number;
+}
+
+export const PlansSelectionComponentStyles = ({
+  width,
+}: IPlansSelectionComponentStylesProps) => {
   return StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      paddingHorizontal: resizeDimention({width, scale: 6}),
+    },
     pagination: {
-      flexDirection: 'row', // Barra de índice horizontal
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       marginVertical: 10,

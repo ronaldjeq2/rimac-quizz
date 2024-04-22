@@ -1,54 +1,53 @@
 import {Icon} from '@rneui/themed';
 import React, {useRef, useState} from 'react';
-import {FlatList, View, Text, StyleSheet, Dimensions} from 'react-native';
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 import {COLORS} from '../constants/colors.constants';
 import {PlansSelectionComponentStyles} from './PlansSelection.component.styles';
 import baseStyles from '../shared/styles/baseStyles.styles';
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
-
-// Datos para el swiper
-const data = [
-  {id: '1', title: 'Slide 1'},
-  {id: '2', title: 'Slide 2'},
-  {id: '3', title: 'Slide 3'},
-];
-
-// Renderizar cada elemento del swiper
-const renderItem = ({item}) => (
-  <View style={styles.slide}>
-    <Text style={styles.text}>{item.title}</Text>
-  </View>
-);
+import {PlanItemComponent} from './PlanItem.component';
+import {usePlans} from '../shared/hooks/usePlans';
+import {resizeDimention} from '../utils/dimensions';
 
 export const PlansSelectionComponent = () => {
-  const {pagination, containerIcon, text} = PlansSelectionComponentStyles();
+  const {width} = useWindowDimensions();
+  const {container, pagination, containerIcon, text} =
+    PlansSelectionComponentStyles({width});
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef(null);
-
+  const {plans} = usePlans({});
   const handleScroll = (event: any) => {
     const xOffset = event.nativeEvent.contentOffset.x;
-    const index = Math.round(xOffset / SCREEN_WIDTH);
+    const index = Math.round(xOffset / width);
     setCurrentIndex(index);
   };
 
   const scrollToIndexItem = (index: number) => {
-    if (flatListRef.current && index >= 0 && index < data.length) {
-      flatListRef.current?.scrollToIndex({index, animated: true}); // Desplazar al índice correcto
-      setCurrentIndex(index);
+    if (plans) {
+      if (flatListRef.current && index >= 0 && index < plans.length) {
+        flatListRef.current?.scrollToIndex({index, animated: true}); // Desplazar al índice correcto
+        setCurrentIndex(index);
+      }
     }
   };
 
   return (
-    <View style={styles.container}>
+    <View style={container}>
       <FlatList
         horizontal
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
+        data={plans}
+        renderItem={({item}) => {
+          return <PlanItemComponent planInfo={item} existDisscount />;
+        }}
+        keyExtractor={item => item.name}
         pagingEnabled
         snapToAlignment="center"
-        snapToInterval={SCREEN_WIDTH}
+        snapToInterval={width}
         onScroll={handleScroll}
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
@@ -62,7 +61,7 @@ export const PlansSelectionComponent = () => {
           onPress={() => scrollToIndexItem(currentIndex - 1)}
         />
         <Text style={[baseStyles.defaultText, text]}>
-          {currentIndex + 1} / 3
+          {currentIndex + 1} / {plans?.length}
         </Text>
         <Icon
           name="keyboard-arrow-right"
@@ -74,24 +73,3 @@ export const PlansSelectionComponent = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  slide: {
-    width: SCREEN_WIDTH,
-    height: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'lightgrey',
-    borderRadius: 10,
-    marginHorizontal: 10,
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});
