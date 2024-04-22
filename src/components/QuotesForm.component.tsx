@@ -9,9 +9,7 @@ import CheckBoxComponent from '../shared/components/CheckBox.component';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {Button} from '@rneui/themed';
 import {IUserForm} from '../types/user';
-import {userService} from '../services/user/user.service';
-import {userInfoWraper} from '../shared/wrapers/user.wraper';
-import { useUserContext } from '../shared/hooks/useUserContext';
+import {useUserContext} from '../shared/hooks/useUserContext';
 
 const dataDrop = [
   {label: 'Dni', value: 'dni'},
