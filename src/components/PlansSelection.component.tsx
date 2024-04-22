@@ -1,17 +1,13 @@
 import {Icon} from '@rneui/themed';
 import React, {useRef, useState} from 'react';
-import {
-  FlatList,
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-} from 'react-native';
+import {FlatList, View, Text, useWindowDimensions} from 'react-native';
 import {COLORS} from '../constants/colors.constants';
 import {PlansSelectionComponentStyles} from './PlansSelection.component.styles';
 import baseStyles from '../shared/styles/baseStyles.styles';
 import {PlanItemComponent} from './PlanItem.component';
 import {usePlans} from '../shared/hooks/usePlans';
+import { useUser } from '../shared/hooks/useUser';
+import { useUserContext } from '../shared/hooks/useUserContext';
 
 interface IPlansSelectionComponent {
   existDisscount?: boolean;
@@ -25,7 +21,9 @@ export const PlansSelectionComponent = ({
     PlansSelectionComponentStyles({width});
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef(null);
-  const {plans} = usePlans({});
+  const {userInfo} = useUserContext();
+  const {age} = userInfo;
+  const {plans} = usePlans({age});
   const handleScroll = (event: any) => {
     const xOffset = event.nativeEvent.contentOffset.x;
     const index = Math.round(xOffset / width);

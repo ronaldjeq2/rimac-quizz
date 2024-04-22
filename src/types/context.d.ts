@@ -1,13 +1,7 @@
-import {IUserForm} from './user';
-
-export interface IUserInfo {
-  name: string;
-  lastName: string;
-  birthDay: string;
-}
+import {IUserForm, IUserInfoState} from './user';
 
 export interface IUserContext {
-  userInfo: IUserInfo | null;
+  userInfo: IUserInfoState | null;
   getInfo: (data: IUserForm, successFunction?: () => void) => Promise<T>;
   isLoading?: boolean;
 }
